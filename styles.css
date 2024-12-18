@@ -1,0 +1,191 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Solid black background */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Playlist Section */
+.playlist {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #222;
+    color: #fff;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    margin-bottom: 20px;
+    overflow-y: auto;
+}
+
+.playlist h2 {
+    color: #1DB954;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.playlist ul {
+    list-style: none;
+    padding: 0;
+}
+
+.playlist li {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ddd;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.playlist li:hover, .playlist li.active {
+    background-color: #1DB954;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Player Section */
+.player {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+}
+
+/* Album Art and Canvas */
+.album-art-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 20px auto;
+}
+
+#waveCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%; /* Ensures the canvas is circular */
+    z-index: 0; /* Behind the album cover */
+}
+
+#album-cover {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Makes the album cover circular */
+    object-fit: cover; /* Ensures image fits properly */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Places album cover above the canvas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Controls and Progress Bar */
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #1DB954;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+    transform: scale(1.2);
+    background-color: #1ed760;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+#progress {
+    height: 100%;
+    width: 0;
+    background-color: #1DB954;
+    transition: width 0.1s;
+}
+
+/* Song Title */
+#song-title {
+    font-size: 1.2em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Snow Effect */
+@keyframes snow {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+.snowflake {
+    position: absolute;
+    top: -50px;
+    color: white;
+    font-size: 1.2rem;
+    user-select: none;
+    animation: snow 10s linear infinite;
+    opacity: 0.8;
+}
+
+.snowflake:nth-child(odd) {
+    font-size: 1.5rem;
+    animation-duration: 12s;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .playlist {
+        width: 100%;
+    }
+
+    .album-art-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    #waveCanvas {
+        width: 200px;
+        height: 200px;
+    }
+
+    #album-cover {
+        width: 80%;
+        height: 80%;
+    }
+}
