@@ -4,11 +4,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #000000; /* Solid black background */
     color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow-y: auto;
     height: 100vh;
-    overflow: hidden;
 }
 
 /* Main Container */
@@ -16,50 +13,83 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 20px;
-    width: 100%;
-    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* Playlist Section */
-.playlist {
-    background-color: #000000;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #222;
-    color: #fff;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
+.playlist-container {
+    width: 100%;
+    max-width: 800px;
     margin-bottom: 20px;
-    overflow-y: auto;
 }
 
-.playlist h2 {
-    color: #1DB954;
-    font-size: 1.5em;
+.playlist-header {
+    text-align: left;
     margin-bottom: 10px;
 }
 
-.playlist ul {
+#playlist-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#playlist-subtitle {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.song-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.playlist li {
-    padding: 10px;
-    margin: 5px 0;
-    cursor: pointer;
+.song-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
     border-radius: 5px;
-    color: #ddd;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s ease;
+    cursor: pointer;
 }
 
-.playlist li:hover, .playlist li.active {
+.song-item:hover {
     background-color: #1DB954;
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.singer-name {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.song-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.song-buttons i {
     color: #fff;
-    transform: scale(1.05);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.song-buttons i:hover {
+    color: #1DB954;
 }
 
 /* Player Section */
@@ -70,7 +100,6 @@ body {
     position: relative;
 }
 
-/* Album Art and Canvas */
 .album-art-container {
     position: relative;
     width: 300px;
@@ -82,21 +111,21 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%; /* Ensures the canvas is circular */
-    z-index: 0; /* Behind the album cover */
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Circular canvas */
+    z-index: 0;
 }
 
 #album-cover {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* Makes the album cover circular */
-    object-fit: cover; /* Ensures image fits properly */
+    width: 80%;
+    height: 80%;
+    border-radius: 50%; /* Makes album cover circular */
+    object-fit: cover;
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; /* Places album cover above the canvas */
+    top: 10%;
+    left: 10%;
+    z-index: 1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -170,8 +199,14 @@ button:hover {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .playlist {
-        width: 100%;
+    .playlist-header {
+        text-align: center;
+    }
+
+    .song-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 
     .album-art-container {
@@ -180,8 +215,8 @@ button:hover {
     }
 
     #waveCanvas {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: 100%;
     }
 
     #album-cover {
