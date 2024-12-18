@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Playlist</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Playlist Section -->
+        <div class="playlist-container">
+            <div class="playlist-header">
+                <h1 id="playlist-title">Santa Cross & the RAs</h1>
+                <p id="playlist-subtitle">Public Playlist • 31 songs • 1 hr 32 min</p>
+            </div>
+            <ul class="song-list" id="song-list"></ul>
+        </div>
+
+        <!-- Player Section -->
+        <div class="player">
+            <div class="album-art-container">
+                <canvas id="waveCanvas"></canvas>
+                <img id="album-cover" src="album_cover.jpeg" alt="Album Art">
+            </div>
+            <h3 id="song-title">Song Title</h3>
+            <audio id="audioPlayer" controls></audio>
+            <div class="controls">
+                <button id="prevBtn">⏮</button>
+                <button id="playPauseBtn">▶</button>
+                <button id="nextBtn">⏭</button>
+            </div>
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Snow effect
+        function createSnowflakes() {
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement("div");
+                snowflake.className = "snowflake";
+                snowflake.textContent = "❄";
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                snowflake.style.opacity = Math.random();
+                document.body.appendChild(snowflake);
+            }
+        }
+        createSnowflakes();
+    </script>
+</body>
+</html>
+<!--  -->
